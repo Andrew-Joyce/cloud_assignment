@@ -7,6 +7,7 @@ body, html {
     display: flex;
     flex-direction: column; /* Change flex direction to column to stack children vertically */
     align-items: center;
+    margin-bottom: 30px;
 }
 
 
@@ -55,13 +56,14 @@ body, html {
     margin-top: 20px;
 }
 
-.button-container {
+.button-container,.grid-item button,.cart-action-button, shopping-cart button {
     display: flex;
     justify-content: space-between; /* This ensures buttons are spaced evenly */
 }
 
 .login-form button, .login-form .button-link,
-.register-form button, .register-form .button-link {
+.register-form button, .register-form .button-link, .grid-item button, .add-to-cart-button, .cart-action-button, 
+shopping-cart button {
     flex: 1; /* Makes each button fill the container equally */
     padding: 10px;
     margin: 0 5px; /* Consistent margin on both sides */
@@ -77,11 +79,13 @@ body, html {
 }
 
 .login-form button:hover, .login-form .button-link:hover,
-.register-form button:hover, .register-form .button-link:hover {
+.register-form button:hover, .register-form .button-link:hover,.grid-item button,.add-to-cart-button,
+.cart-action-button, .cart-action-button, shopping-cart button {
     background-color: black;
 }
 
-.login-form .button-link, .register-form .button-link {
+.login-form .button-link, .register-form .button-link,.grid-item button, .add-to-cart-button, 
+.cart-action-button, shopping-cart button {
     display: inline-block; /* Ensures link behaves like a button */
     width: calc(50% - 10px); /* Adjust width considering margin */
 }
@@ -132,13 +136,13 @@ body, html {
     color: white;
 }
 
-.register-form .button-container {
+.register-form .button-container, shopping-cart button {
     display: flex;
     justify-content: space-around; /* Distributes spacing evenly */
     margin-top: 20px;
 }
 
-.register-form button {
+.register-form button, shopping-cart button {
     width: 110px; /* Fixed width */
     height: 40px; /* Fixed height */
     margin: 0 5px; /* Margin for spacing */
@@ -154,7 +158,7 @@ body, html {
     box-sizing: border-box; /* Includes padding and border in the width and height */
 }
 
-.register-form button:hover {
+.register-form button:hover, shopping-cart button:hover {
     background-color: #8e2de2;
 }
 
@@ -169,6 +173,7 @@ body, html {
     grid-template-columns: repeat(4, 1fr); /* 4 columns */
     grid-gap: 20px;
     width: 100%; /* Set width to use full available width */
+    margin-bottom: 30px;
 }
 
 .grid-item {
@@ -182,4 +187,41 @@ body, html {
     width: auto;  /* Maintain the aspect ratio */
     height: 150px; /* Fixed height to make all images the same size */
     object-fit: cover; /* Cover the area of the box without distorting the ratio */
+}
+
+#shopping-cart {
+    width: 100%;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.cart-grid {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart-grid th, .cart-grid td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-grid .item-quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.cart-grid .remove-item {
+    color: white;
+    background-color: red;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+tfoot td {
+    text-align: right;
+    padding-right: 20px;
 }
