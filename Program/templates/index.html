@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Food Distribution List</h1>
+    </header>
+    <div class="grid-container">
+        {% for product, quantity_available in products %}
+        <div class="grid-item">
+            <h2>{{ product.ProductName }}</h2>
+            <p><strong>Product ID:</strong> {{ product.ProductID }}</p>
+            <p><strong>Quantity Available:</strong> {{ quantity_available }}</p>
+            <p><strong>Price:</strong> {{ product.Price }}</p>
+            <p><strong>Category:</strong> {{ product.Category }}</p>
+            <p><strong>Description:</strong> {{ product.Description }}</p>
+            <img src="{{ product.ImageURL }}" alt="{{ product.ProductName }}">
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

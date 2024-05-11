@@ -1,0 +1,14 @@
+
+Failed to query DynamoDB
+Traceback (most recent call last):
+  File "C:\Users\andre\Documents\test\application.py", line 96, in register
+    response = table.get_item(Key={'email': email})
+  File "C:\Users\andre\Documents\test\venv\lib\site-packages\boto3\resources\factory.py", line 581, in do_action
+    response = action(self, *args, **kwargs)
+  File "C:\Users\andre\Documents\test\venv\lib\site-packages\boto3\resources\action.py", line 88, in __call__
+    response = getattr(parent.meta.client, operation_name)(*args, **params)
+  File "C:\Users\andre\Documents\test\venv\lib\site-packages\botocore\client.py", line 565, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "C:\Users\andre\Documents\test\venv\lib\site-packages\botocore\client.py", line 1021, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.ResourceNotFoundException: An error occurred (ResourceNotFoundException) when calling the GetItem operation: Requested resource not found
