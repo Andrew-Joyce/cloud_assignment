@@ -1,0 +1,369 @@
+2024-05-09 09:19:12,057 [INFO] -----------------------Starting build-----------------------
+2024-05-09 09:19:12,076 [INFO] Running configSets: _OnInstanceBoot
+2024-05-09 09:19:12,081 [INFO] Running configSet _OnInstanceBoot
+2024-05-09 09:19:12,085 [INFO] Running config AWSEBBaseConfig
+2024-05-09 09:19:12,838 [INFO] Command clearbackupfiles succeeded
+2024-05-09 09:19:12,843 [INFO] Running config AWSEBCfnHupEndpointOverride
+2024-05-09 09:19:12,857 [INFO] Command clearbackupfiles succeeded
+2024-05-09 09:19:12,859 [INFO] ConfigSets completed
+2024-05-09 09:19:12,859 [INFO] -----------------------Build complete-----------------------
+2024-05-09 09:19:21,516 [INFO] -----------------------Starting build-----------------------
+2024-05-09 09:19:21,541 [INFO] Running configSets: Infra-EmbeddedPreBuild
+2024-05-09 09:19:21,544 [INFO] Running configSet Infra-EmbeddedPreBuild
+2024-05-09 09:19:21,544 [INFO] ConfigSets completed
+2024-05-09 09:19:21,544 [INFO] -----------------------Build complete-----------------------
+2024-05-09 09:19:49,584 [INFO] -----------------------Starting build-----------------------
+2024-05-09 09:19:49,589 [INFO] Running configSets: Infra-EmbeddedPostBuild
+2024-05-09 09:19:49,591 [INFO] Running configSet Infra-EmbeddedPostBuild
+2024-05-09 09:19:49,592 [INFO] ConfigSets completed
+2024-05-09 09:19:49,592 [INFO] -----------------------Build complete-----------------------
+2024-05-09 09:23:47,182 [INFO] -----------------------Starting build-----------------------
+2024-05-09 09:23:47,189 [INFO] Running configSets: Infra-EmbeddedPreBuild
+2024-05-09 09:23:47,192 [INFO] Running configSet Infra-EmbeddedPreBuild
+2024-05-09 09:23:47,192 [INFO] ConfigSets completed
+2024-05-09 09:23:47,193 [INFO] -----------------------Build complete-----------------------
+2024-05-09 09:23:54,519 [INFO] -----------------------Starting build-----------------------
+2024-05-09 09:23:54,530 [INFO] Running configSets: Infra-EmbeddedPostBuild
+2024-05-09 09:23:54,533 [INFO] Running configSet Infra-EmbeddedPostBuild
+2024-05-09 09:23:54,533 [INFO] ConfigSets completed
+2024-05-09 09:23:54,533 [INFO] -----------------------Build complete-----------------------
+2024-05-09 09:25:06,806 [INFO] -----------------------Starting build-----------------------
+2024-05-09 09:25:06,813 [INFO] Running configSets: Infra-EmbeddedPreBuild
+2024-05-09 09:25:06,815 [INFO] Running configSet Infra-EmbeddedPreBuild
+2024-05-09 09:25:06,815 [INFO] ConfigSets completed
+2024-05-09 09:25:06,815 [INFO] -----------------------Build complete-----------------------
+2024-05-09 09:25:13,129 [INFO] -----------------------Starting build-----------------------
+2024-05-09 09:25:13,134 [INFO] Running configSets: Infra-EmbeddedPostBuild
+2024-05-09 09:25:13,136 [INFO] Running configSet Infra-EmbeddedPostBuild
+2024-05-09 09:25:13,136 [INFO] ConfigSets completed
+2024-05-09 09:25:13,137 [INFO] -----------------------Build complete-----------------------
+2024-05-09 09:32:34,401 [INFO] -----------------------Starting build-----------------------
+2024-05-09 09:32:34,435 [INFO] Running configSets: Infra-EmbeddedPreBuild
+2024-05-09 09:32:34,439 [INFO] Running configSet Infra-EmbeddedPreBuild
+2024-05-09 09:32:34,443 [INFO] Running config prebuild_0_new_assignment
+2024-05-09 09:32:34,456 [ERROR] Command start_gunicorn (gunicorn -b 0.0.0.0:8000 application:application) failed
+2024-05-09 09:32:34,456 [ERROR] Error encountered during build of prebuild_0_new_assignment: Command start_gunicorn failed
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 579, in run_config
+    CloudFormationCarpenter(config, self._auth_config, self.strict_mode).build(worklog)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 277, in build
+    changes['commands'] = CommandTool().apply(
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/command_tool.py", line 127, in apply
+    raise ToolError(u"Command %s failed" % name)
+cfnbootstrap.construction_errors.ToolError: Command start_gunicorn failed
+2024-05-09 09:32:34,459 [ERROR] -----------------------BUILD FAILED!------------------------
+2024-05-09 09:32:34,459 [ERROR] Unhandled exception during build: Command start_gunicorn failed
+Traceback (most recent call last):
+  File "/opt/aws/bin/cfn-init", line 181, in <module>
+    worklog.build(metadata, configSets, strict_mode)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 137, in build
+    Contractor(metadata, strict_mode).build(configSets, self)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 567, in build
+    self.run_config(config, worklog)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 579, in run_config
+    CloudFormationCarpenter(config, self._auth_config, self.strict_mode).build(worklog)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 277, in build
+    changes['commands'] = CommandTool().apply(
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/command_tool.py", line 127, in apply
+    raise ToolError(u"Command %s failed" % name)
+cfnbootstrap.construction_errors.ToolError: Command start_gunicorn failed
+2024-05-09 09:34:13,557 [INFO] -----------------------Starting build-----------------------
+2024-05-09 09:34:13,577 [INFO] Running configSets: Infra-EmbeddedPreBuild
+2024-05-09 09:34:13,580 [INFO] Running configSet Infra-EmbeddedPreBuild
+2024-05-09 09:34:13,583 [INFO] Running config prebuild_0_new_assignment
+2024-05-09 09:34:13,593 [ERROR] Command start_gunicorn (gunicorn -b 0.0.0.0:8000 application:application) failed
+2024-05-09 09:34:13,593 [ERROR] Error encountered during build of prebuild_0_new_assignment: Command start_gunicorn failed
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 579, in run_config
+    CloudFormationCarpenter(config, self._auth_config, self.strict_mode).build(worklog)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 277, in build
+    changes['commands'] = CommandTool().apply(
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/command_tool.py", line 127, in apply
+    raise ToolError(u"Command %s failed" % name)
+cfnbootstrap.construction_errors.ToolError: Command start_gunicorn failed
+2024-05-09 09:34:13,594 [ERROR] -----------------------BUILD FAILED!------------------------
+2024-05-09 09:34:13,594 [ERROR] Unhandled exception during build: Command start_gunicorn failed
+Traceback (most recent call last):
+  File "/opt/aws/bin/cfn-init", line 181, in <module>
+    worklog.build(metadata, configSets, strict_mode)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 137, in build
+    Contractor(metadata, strict_mode).build(configSets, self)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 567, in build
+    self.run_config(config, worklog)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 579, in run_config
+    CloudFormationCarpenter(config, self._auth_config, self.strict_mode).build(worklog)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 277, in build
+    changes['commands'] = CommandTool().apply(
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/command_tool.py", line 127, in apply
+    raise ToolError(u"Command %s failed" % name)
+cfnbootstrap.construction_errors.ToolError: Command start_gunicorn failed
+2024-05-09 09:35:50,532 [INFO] -----------------------Starting build-----------------------
+2024-05-09 09:35:50,542 [INFO] Running configSets: Infra-EmbeddedPreBuild
+2024-05-09 09:35:50,544 [INFO] Running configSet Infra-EmbeddedPreBuild
+2024-05-09 09:35:50,544 [INFO] ConfigSets completed
+2024-05-09 09:35:50,544 [INFO] -----------------------Build complete-----------------------
+2024-05-09 09:35:57,206 [INFO] -----------------------Starting build-----------------------
+2024-05-09 09:35:57,214 [INFO] Running configSets: Infra-EmbeddedPostBuild
+2024-05-09 09:35:57,216 [INFO] Running configSet Infra-EmbeddedPostBuild
+2024-05-09 09:35:57,217 [INFO] ConfigSets completed
+2024-05-09 09:35:57,217 [INFO] -----------------------Build complete-----------------------
+2024-05-09 09:42:54,938 [INFO] -----------------------Starting build-----------------------
+2024-05-09 09:42:54,944 [INFO] Running configSets: Infra-EmbeddedPreBuild
+2024-05-09 09:42:54,946 [INFO] Running configSet Infra-EmbeddedPreBuild
+2024-05-09 09:42:54,946 [INFO] ConfigSets completed
+2024-05-09 09:42:54,946 [INFO] -----------------------Build complete-----------------------
+2024-05-09 09:43:01,981 [INFO] -----------------------Starting build-----------------------
+2024-05-09 09:43:01,991 [INFO] Running configSets: Infra-EmbeddedPostBuild
+2024-05-09 09:43:01,996 [INFO] Running configSet Infra-EmbeddedPostBuild
+2024-05-09 09:43:01,997 [INFO] ConfigSets completed
+2024-05-09 09:43:01,997 [INFO] -----------------------Build complete-----------------------
+2024-05-09 10:01:52,276 [INFO] -----------------------Starting build-----------------------
+2024-05-09 10:01:52,280 [INFO] Running configSets: Infra-EmbeddedPreBuild
+2024-05-09 10:01:52,282 [INFO] Running configSet Infra-EmbeddedPreBuild
+2024-05-09 10:01:52,282 [INFO] ConfigSets completed
+2024-05-09 10:01:52,282 [INFO] -----------------------Build complete-----------------------
+2024-05-09 10:01:58,611 [INFO] -----------------------Starting build-----------------------
+2024-05-09 10:01:58,616 [INFO] Running configSets: Infra-EmbeddedPostBuild
+2024-05-09 10:01:58,618 [INFO] Running configSet Infra-EmbeddedPostBuild
+2024-05-09 10:01:58,618 [INFO] ConfigSets completed
+2024-05-09 10:01:58,618 [INFO] -----------------------Build complete-----------------------
+2024-05-09 10:11:44,298 [INFO] -----------------------Starting build-----------------------
+2024-05-09 10:11:44,303 [INFO] Running configSets: Infra-EmbeddedPreBuild
+2024-05-09 10:11:44,305 [INFO] Running configSet Infra-EmbeddedPreBuild
+2024-05-09 10:11:44,305 [INFO] ConfigSets completed
+2024-05-09 10:11:44,305 [INFO] -----------------------Build complete-----------------------
+2024-05-09 10:23:02,846 [INFO] -----------------------Starting build-----------------------
+2024-05-09 10:23:02,851 [INFO] Running configSets: Infra-EmbeddedPreBuild
+2024-05-09 10:23:02,853 [INFO] Running configSet Infra-EmbeddedPreBuild
+2024-05-09 10:23:02,855 [INFO] Running config prebuild_0_new_assignment
+2024-05-09 10:23:04,972 [INFO] Command 01_install_gunicorn succeeded
+2024-05-09 10:23:04,974 [INFO] ConfigSets completed
+2024-05-09 10:23:04,974 [INFO] -----------------------Build complete-----------------------
+2024-05-09 10:26:15,125 [INFO] -----------------------Starting build-----------------------
+2024-05-09 10:26:15,130 [INFO] Running configSets: Infra-EmbeddedPreBuild
+2024-05-09 10:26:15,132 [INFO] Running configSet Infra-EmbeddedPreBuild
+2024-05-09 10:26:15,133 [INFO] ConfigSets completed
+2024-05-09 10:26:15,133 [INFO] -----------------------Build complete-----------------------
+2024-05-09 10:26:22,554 [INFO] -----------------------Starting build-----------------------
+2024-05-09 10:26:22,561 [INFO] Running configSets: Infra-EmbeddedPostBuild
+2024-05-09 10:26:22,564 [INFO] Running configSet Infra-EmbeddedPostBuild
+2024-05-09 10:26:22,564 [INFO] ConfigSets completed
+2024-05-09 10:26:22,564 [INFO] -----------------------Build complete-----------------------
+2024-05-09 10:30:11,915 [INFO] -----------------------Starting build-----------------------
+2024-05-09 10:30:11,921 [INFO] Running configSets: Infra-EmbeddedPreBuild
+2024-05-09 10:30:11,923 [INFO] Running configSet Infra-EmbeddedPreBuild
+2024-05-09 10:30:11,924 [INFO] ConfigSets completed
+2024-05-09 10:30:11,924 [INFO] -----------------------Build complete-----------------------
+2024-05-09 10:30:18,208 [INFO] -----------------------Starting build-----------------------
+2024-05-09 10:30:18,215 [INFO] Running configSets: Infra-EmbeddedPostBuild
+2024-05-09 10:30:18,216 [INFO] Running configSet Infra-EmbeddedPostBuild
+2024-05-09 10:30:18,217 [INFO] ConfigSets completed
+2024-05-09 10:30:18,217 [INFO] -----------------------Build complete-----------------------
+2024-05-09 10:57:10,804 [INFO] -----------------------Starting build-----------------------
+2024-05-09 10:57:10,811 [INFO] Running configSets: Infra-EmbeddedPreBuild
+2024-05-09 10:57:10,813 [INFO] Running configSet Infra-EmbeddedPreBuild
+2024-05-09 10:57:10,813 [INFO] ConfigSets completed
+2024-05-09 10:57:10,813 [INFO] -----------------------Build complete-----------------------
+2024-05-09 10:57:17,542 [INFO] -----------------------Starting build-----------------------
+2024-05-09 10:57:17,547 [INFO] Running configSets: Infra-EmbeddedPostBuild
+2024-05-09 10:57:17,548 [INFO] Running configSet Infra-EmbeddedPostBuild
+2024-05-09 10:57:17,549 [INFO] ConfigSets completed
+2024-05-09 10:57:17,549 [INFO] -----------------------Build complete-----------------------
+2024-05-09 10:59:55,961 [INFO] -----------------------Starting build-----------------------
+2024-05-09 10:59:55,966 [INFO] Running configSets: Infra-EmbeddedPreBuild
+2024-05-09 10:59:55,968 [INFO] Running configSet Infra-EmbeddedPreBuild
+2024-05-09 10:59:55,968 [INFO] ConfigSets completed
+2024-05-09 10:59:55,968 [INFO] -----------------------Build complete-----------------------
+2024-05-09 11:00:05,664 [INFO] -----------------------Starting build-----------------------
+2024-05-09 11:00:05,675 [INFO] Running configSets: Infra-EmbeddedPostBuild
+2024-05-09 11:00:05,679 [INFO] Running configSet Infra-EmbeddedPostBuild
+2024-05-09 11:00:05,679 [INFO] ConfigSets completed
+2024-05-09 11:00:05,680 [INFO] -----------------------Build complete-----------------------
+2024-05-09 11:02:05,105 [INFO] -----------------------Starting build-----------------------
+2024-05-09 11:02:05,109 [INFO] Running configSets: Infra-EmbeddedPreBuild
+2024-05-09 11:02:05,111 [INFO] Running configSet Infra-EmbeddedPreBuild
+2024-05-09 11:02:05,111 [INFO] ConfigSets completed
+2024-05-09 11:02:05,112 [INFO] -----------------------Build complete-----------------------
+2024-05-09 11:02:10,962 [INFO] -----------------------Starting build-----------------------
+2024-05-09 11:02:10,968 [INFO] Running configSets: Infra-EmbeddedPostBuild
+2024-05-09 11:02:10,970 [INFO] Running configSet Infra-EmbeddedPostBuild
+2024-05-09 11:02:10,970 [INFO] ConfigSets completed
+2024-05-09 11:02:10,970 [INFO] -----------------------Build complete-----------------------
+2024-05-09 11:08:47,686 [INFO] -----------------------Starting build-----------------------
+2024-05-09 11:08:47,692 [INFO] Running configSets: Infra-EmbeddedPreBuild
+2024-05-09 11:08:47,694 [INFO] Running configSet Infra-EmbeddedPreBuild
+2024-05-09 11:08:47,694 [INFO] ConfigSets completed
+2024-05-09 11:08:47,694 [INFO] -----------------------Build complete-----------------------
+2024-05-09 11:08:54,557 [INFO] -----------------------Starting build-----------------------
+2024-05-09 11:08:54,562 [INFO] Running configSets: Infra-EmbeddedPostBuild
+2024-05-09 11:08:54,564 [INFO] Running configSet Infra-EmbeddedPostBuild
+2024-05-09 11:08:54,564 [INFO] ConfigSets completed
+2024-05-09 11:08:54,564 [INFO] -----------------------Build complete-----------------------
+2024-05-09 11:15:44,182 [INFO] -----------------------Starting build-----------------------
+2024-05-09 11:15:44,188 [INFO] Running configSets: Infra-EmbeddedPreBuild
+2024-05-09 11:15:44,190 [INFO] Running configSet Infra-EmbeddedPreBuild
+2024-05-09 11:15:44,190 [INFO] ConfigSets completed
+2024-05-09 11:15:44,190 [INFO] -----------------------Build complete-----------------------
+2024-05-09 11:15:50,530 [INFO] -----------------------Starting build-----------------------
+2024-05-09 11:15:50,536 [INFO] Running configSets: Infra-EmbeddedPostBuild
+2024-05-09 11:15:50,538 [INFO] Running configSet Infra-EmbeddedPostBuild
+2024-05-09 11:15:50,538 [INFO] ConfigSets completed
+2024-05-09 11:15:50,538 [INFO] -----------------------Build complete-----------------------
+2024-05-09 11:18:37,206 [INFO] -----------------------Starting build-----------------------
+2024-05-09 11:18:37,211 [INFO] Running configSets: Infra-EmbeddedPreBuild
+2024-05-09 11:18:37,212 [INFO] Running configSet Infra-EmbeddedPreBuild
+2024-05-09 11:18:37,213 [INFO] ConfigSets completed
+2024-05-09 11:18:37,213 [INFO] -----------------------Build complete-----------------------
+2024-05-09 11:18:43,838 [INFO] -----------------------Starting build-----------------------
+2024-05-09 11:18:43,843 [INFO] Running configSets: Infra-EmbeddedPostBuild
+2024-05-09 11:18:43,845 [INFO] Running configSet Infra-EmbeddedPostBuild
+2024-05-09 11:18:43,846 [INFO] ConfigSets completed
+2024-05-09 11:18:43,846 [INFO] -----------------------Build complete-----------------------
+2024-05-09 11:21:50,421 [INFO] -----------------------Starting build-----------------------
+2024-05-09 11:21:50,428 [INFO] Running configSets: Infra-EmbeddedPreBuild
+2024-05-09 11:21:50,430 [INFO] Running configSet Infra-EmbeddedPreBuild
+2024-05-09 11:21:50,432 [INFO] Running config prebuild_0_new_assignment
+2024-05-09 11:21:51,675 [INFO] Command 01_install_gunicorn succeeded
+2024-05-09 11:21:51,676 [INFO] ConfigSets completed
+2024-05-09 11:21:51,677 [INFO] -----------------------Build complete-----------------------
+2024-05-09 11:21:58,196 [INFO] -----------------------Starting build-----------------------
+2024-05-09 11:21:58,202 [INFO] Running configSets: Infra-EmbeddedPostBuild
+2024-05-09 11:21:58,204 [INFO] Running configSet Infra-EmbeddedPostBuild
+2024-05-09 11:21:58,206 [INFO] Running config postbuild_0_new_assignment
+2024-05-09 11:22:03,442 [ERROR] Command 01_start_gunicorn (gunicorn -b 0.0.0.0:8000 application:application) failed
+2024-05-09 11:22:03,443 [ERROR] Error encountered during build of postbuild_0_new_assignment: Command 01_start_gunicorn failed
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 579, in run_config
+    CloudFormationCarpenter(config, self._auth_config, self.strict_mode).build(worklog)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 277, in build
+    changes['commands'] = CommandTool().apply(
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/command_tool.py", line 127, in apply
+    raise ToolError(u"Command %s failed" % name)
+cfnbootstrap.construction_errors.ToolError: Command 01_start_gunicorn failed
+2024-05-09 11:22:03,446 [ERROR] -----------------------BUILD FAILED!------------------------
+2024-05-09 11:22:03,446 [ERROR] Unhandled exception during build: Command 01_start_gunicorn failed
+Traceback (most recent call last):
+  File "/opt/aws/bin/cfn-init", line 181, in <module>
+    worklog.build(metadata, configSets, strict_mode)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 137, in build
+    Contractor(metadata, strict_mode).build(configSets, self)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 567, in build
+    self.run_config(config, worklog)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 579, in run_config
+    CloudFormationCarpenter(config, self._auth_config, self.strict_mode).build(worklog)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 277, in build
+    changes['commands'] = CommandTool().apply(
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/command_tool.py", line 127, in apply
+    raise ToolError(u"Command %s failed" % name)
+cfnbootstrap.construction_errors.ToolError: Command 01_start_gunicorn failed
+2024-05-11 00:24:12,515 [INFO] -----------------------Starting build-----------------------
+2024-05-11 00:24:12,520 [INFO] Running configSets: Infra-EmbeddedPreBuild
+2024-05-11 00:24:12,522 [INFO] Running configSet Infra-EmbeddedPreBuild
+2024-05-11 00:24:12,525 [INFO] Running config prebuild_0_new_assignment
+2024-05-11 00:24:13,348 [INFO] Command 01_install_gunicorn succeeded
+2024-05-11 00:24:13,349 [INFO] ConfigSets completed
+2024-05-11 00:24:13,349 [INFO] -----------------------Build complete-----------------------
+2024-05-11 00:24:20,334 [INFO] -----------------------Starting build-----------------------
+2024-05-11 00:24:20,341 [INFO] Running configSets: Infra-EmbeddedPostBuild
+2024-05-11 00:24:20,344 [INFO] Running configSet Infra-EmbeddedPostBuild
+2024-05-11 00:24:20,347 [INFO] Running config postbuild_0_new_assignment
+2024-05-11 00:24:25,533 [ERROR] Command 01_start_gunicorn (gunicorn -b 0.0.0.0:8000 application:application) failed
+2024-05-11 00:24:25,533 [ERROR] Error encountered during build of postbuild_0_new_assignment: Command 01_start_gunicorn failed
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 579, in run_config
+    CloudFormationCarpenter(config, self._auth_config, self.strict_mode).build(worklog)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 277, in build
+    changes['commands'] = CommandTool().apply(
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/command_tool.py", line 127, in apply
+    raise ToolError(u"Command %s failed" % name)
+cfnbootstrap.construction_errors.ToolError: Command 01_start_gunicorn failed
+2024-05-11 00:24:25,534 [ERROR] -----------------------BUILD FAILED!------------------------
+2024-05-11 00:24:25,534 [ERROR] Unhandled exception during build: Command 01_start_gunicorn failed
+Traceback (most recent call last):
+  File "/opt/aws/bin/cfn-init", line 181, in <module>
+    worklog.build(metadata, configSets, strict_mode)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 137, in build
+    Contractor(metadata, strict_mode).build(configSets, self)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 567, in build
+    self.run_config(config, worklog)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 579, in run_config
+    CloudFormationCarpenter(config, self._auth_config, self.strict_mode).build(worklog)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 277, in build
+    changes['commands'] = CommandTool().apply(
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/command_tool.py", line 127, in apply
+    raise ToolError(u"Command %s failed" % name)
+cfnbootstrap.construction_errors.ToolError: Command 01_start_gunicorn failed
+2024-05-11 00:33:22,476 [INFO] -----------------------Starting build-----------------------
+2024-05-11 00:33:22,482 [INFO] Running configSets: Infra-EmbeddedPreBuild
+2024-05-11 00:33:22,484 [INFO] Running configSet Infra-EmbeddedPreBuild
+2024-05-11 00:33:22,486 [INFO] Running config prebuild_0_new_assignment
+2024-05-11 00:33:23,337 [INFO] Command 01_install_gunicorn succeeded
+2024-05-11 00:33:23,339 [INFO] ConfigSets completed
+2024-05-11 00:33:23,339 [INFO] -----------------------Build complete-----------------------
+2024-05-11 00:33:30,151 [INFO] -----------------------Starting build-----------------------
+2024-05-11 00:33:30,157 [INFO] Running configSets: Infra-EmbeddedPostBuild
+2024-05-11 00:33:30,159 [INFO] Running configSet Infra-EmbeddedPostBuild
+2024-05-11 00:33:30,161 [INFO] Running config postbuild_0_new_assignment
+2024-05-11 00:33:35,325 [ERROR] Command 01_start_gunicorn (gunicorn -b 0.0.0.0:8000 application:application) failed
+2024-05-11 00:33:35,326 [ERROR] Error encountered during build of postbuild_0_new_assignment: Command 01_start_gunicorn failed
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 579, in run_config
+    CloudFormationCarpenter(config, self._auth_config, self.strict_mode).build(worklog)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 277, in build
+    changes['commands'] = CommandTool().apply(
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/command_tool.py", line 127, in apply
+    raise ToolError(u"Command %s failed" % name)
+cfnbootstrap.construction_errors.ToolError: Command 01_start_gunicorn failed
+2024-05-11 00:33:35,326 [ERROR] -----------------------BUILD FAILED!------------------------
+2024-05-11 00:33:35,326 [ERROR] Unhandled exception during build: Command 01_start_gunicorn failed
+Traceback (most recent call last):
+  File "/opt/aws/bin/cfn-init", line 181, in <module>
+    worklog.build(metadata, configSets, strict_mode)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 137, in build
+    Contractor(metadata, strict_mode).build(configSets, self)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 567, in build
+    self.run_config(config, worklog)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 579, in run_config
+    CloudFormationCarpenter(config, self._auth_config, self.strict_mode).build(worklog)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 277, in build
+    changes['commands'] = CommandTool().apply(
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/command_tool.py", line 127, in apply
+    raise ToolError(u"Command %s failed" % name)
+cfnbootstrap.construction_errors.ToolError: Command 01_start_gunicorn failed
+2024-05-11 00:44:21,047 [INFO] -----------------------Starting build-----------------------
+2024-05-11 00:44:21,055 [INFO] Running configSets: Infra-EmbeddedPreBuild
+2024-05-11 00:44:21,057 [INFO] Running configSet Infra-EmbeddedPreBuild
+2024-05-11 00:44:21,062 [INFO] Running config prebuild_0_new_assignment
+2024-05-11 00:44:21,835 [INFO] Command 01_install_gunicorn succeeded
+2024-05-11 00:44:21,836 [INFO] ConfigSets completed
+2024-05-11 00:44:21,837 [INFO] -----------------------Build complete-----------------------
+2024-05-11 00:44:28,280 [INFO] -----------------------Starting build-----------------------
+2024-05-11 00:44:28,285 [INFO] Running configSets: Infra-EmbeddedPostBuild
+2024-05-11 00:44:28,287 [INFO] Running configSet Infra-EmbeddedPostBuild
+2024-05-11 00:44:28,289 [INFO] Running config postbuild_0_new_assignment
+2024-05-11 00:44:33,435 [ERROR] Command 01_start_gunicorn (gunicorn -b 0.0.0.0:8000 application:application) failed
+2024-05-11 00:44:33,435 [ERROR] Error encountered during build of postbuild_0_new_assignment: Command 01_start_gunicorn failed
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 579, in run_config
+    CloudFormationCarpenter(config, self._auth_config, self.strict_mode).build(worklog)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 277, in build
+    changes['commands'] = CommandTool().apply(
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/command_tool.py", line 127, in apply
+    raise ToolError(u"Command %s failed" % name)
+cfnbootstrap.construction_errors.ToolError: Command 01_start_gunicorn failed
+2024-05-11 00:44:33,436 [ERROR] -----------------------BUILD FAILED!------------------------
+2024-05-11 00:44:33,436 [ERROR] Unhandled exception during build: Command 01_start_gunicorn failed
+Traceback (most recent call last):
+  File "/opt/aws/bin/cfn-init", line 181, in <module>
+    worklog.build(metadata, configSets, strict_mode)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 137, in build
+    Contractor(metadata, strict_mode).build(configSets, self)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 567, in build
+    self.run_config(config, worklog)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 579, in run_config
+    CloudFormationCarpenter(config, self._auth_config, self.strict_mode).build(worklog)
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/construction.py", line 277, in build
+    changes['commands'] = CommandTool().apply(
+  File "/usr/lib/python3.9/site-packages/cfnbootstrap/command_tool.py", line 127, in apply
+    raise ToolError(u"Command %s failed" % name)
+cfnbootstrap.construction_errors.ToolError: Command 01_start_gunicorn failed
