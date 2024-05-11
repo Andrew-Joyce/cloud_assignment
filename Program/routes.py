@@ -1,7 +1,6 @@
-from flask import Blueprint, current_app, render_template, redirect, url_for, flash, session as flask_session
+from flask import Blueprint, current_app, render_template, redirect, url_for, flash, request, jsonify, session as flask_session
 from sqlalchemy import ForeignKey, create_engine, Column, Integer, String, Float, Date
-from sqlalchemy.orm import sessionmaker, declarative_base
-from sqlalchemy.orm import scoped_session
+from sqlalchemy.orm import sessionmaker, declarative_base, scoped_session
 from Program.forms import LoginForm, RegistrationForm
 from .dynamodb_utils import check_credentials, get_table, get_user, insert_user
 
@@ -52,17 +51,28 @@ def login():
 def index():
     try:
         products = db_session.query(Product, Inventory.QuantityAvailable).join(Inventory, Product.ProductID == Inventory.ProductID).all()
+        user_details = None
         if 'email' in flask_session:
             table = get_table("Clients")
-            user_data = get_user(flask_session['email'], table)
-            return render_template('index.html', user_data=user_data, products=products)
-        else:
-            return redirect(url_for('.login'))
+            user_data = get_user(flask_session['email'], table)  # Assuming this returns a dictionary with user details
+            if user_data:
+                user_details = {
+                    'name': user_data.get('name', 'User'),
+                    'address': user_data.get('address', ''),
+                    'suburb': user_data.get('suburb', ''),
+                    'state': user_data.get('state', ''),
+                    'postcode': user_data.get('postcode', ''),
+                    'phone': user_data.get('phone', '')
+                }
+                return render_template('index.html', user_details=user_details, products=products)
+        flash('Please log in to view this page', 'error')
+        return redirect(url_for('.login'))
     except Exception as e:
-        print(f"Error: {e}")
+        current_app.logger.error(f"Error in index: {e}")
         return render_template('error.html', error=str(e))
     finally:
         db_session.remove()
+
 
 @main_bp.route('/register', methods=['GET', 'POST'])
 def register():
@@ -90,9 +100,23 @@ def register():
             flash('Failed to register. Please try again.', 'error')
     return render_template('register.html', form=form)
 
+@main_bp.route('/remove_from_cart', methods=['POST'])
+def remove_from_cart():
+    product_id = request.form['product_id']
+    if product_id in flask_session['cart']:
+        del flask_session['cart'][product_id]
+        new_total = calculate_new_total(flask_session['cart'])
+        return jsonify(success=True, newTotal=f"${new_total:.2f}")
+    else:
+        return jsonify(success=False)
+
+def calculate_new_total(cart):
+    return sum(item['price'] * item['quantity'] for item in cart.values())
+
 @main_bp.route('/logout')
 def logout():
-    print("Logging out.")  # Debug: logging out
     flask_session.pop('email', None)
     flash('You have been logged out.')
-    return redirect(url_for('.login'))
+    return redirect(url_for('main.login'))
+
+

@@ -5,10 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <header>
         <h1>Food Distribution List</h1>
+        {% if user_details %}
+            <h2>Welcome, {{ user_details.name }}</h2>
+            <!-- Hidden user details for potential future use -->
+            <input type="hidden" id="userAddress" value="{{ user_details.address }}">
+            <input type="hidden" id="userSuburb" value="{{ user_details.suburb }}">
+            <input type="hidden" id="userState" value="{{ user_details.state }}">
+            <input type="hidden" id="userPostcode" value="{{ user_details.postcode }}">
+            <input type="hidden" id="userPhone" value="{{ user_details.phone }}">
+        {% endif %}
     </header>
     <div class="grid-container">
         {% for product, quantity_available in products %}
@@ -20,9 +31,11 @@
             <p><strong>Category:</strong> {{ product.Category }}</p>
             <p><strong>Description:</strong> {{ product.Description }}</p>
             <img src="{{ product.ImageURL }}" alt="{{ product.ProductName }}">
-            <label for="quantity_input_{{ product.ProductID }}">Select Quantity:</label>
-            <input type="number" id="quantity_input_{{ product.ProductID }}" name="quantity" min="0" max="{{ quantity_available }}">
-            <button onclick="addQuantity({{ product.ProductID }}, '{{ product.ProductName }}', {{ product.Price }}, this)">Add</button>
+            <div class="quantity-and-button">
+                <label for="quantity_input_{{ product.ProductID }}">Select Quantity:</label>
+                <input type="number" id="quantity_input_{{ product.ProductID }}" name="quantity" min="0" max="{{ quantity_available }}">
+                <button onclick="addQuantity({{ product.ProductID }}, '{{ product.ProductName }}', {{ product.Price }}, this)">Add</button>
+            </div>
         </div>
         {% endfor %}
     </div>
@@ -62,13 +75,13 @@
 
     <script>
         var cartItems = [];
-
+    
         function addQuantity(productId, productName, price, buttonElement) {
             var inputField = document.getElementById("quantity_input_" + productId);
             var availableQuantitySpan = document.getElementById("available_quantity_" + productId);
             var newQuantity = parseInt(inputField.value) || 0;
             var availableQuantity = parseInt(availableQuantitySpan.textContent);
-
+    
             if (newQuantity > 0 && newQuantity <= availableQuantity) {
                 var itemFound = cartItems.find(item => item.productId === productId);
                 if (itemFound) {
@@ -84,81 +97,86 @@
                 availableQuantity -= newQuantity;
                 availableQuantitySpan.textContent = availableQuantity;
                 updateShoppingCart();
-                inputField.value = ""; // Reset input value after adding to cart
+                inputField.value = "";
             } else {
                 alert("Please enter a valid quantity within the available limit.");
             }
         }
-
+    
         function updateShoppingCart() {
             var cartGrid = document.querySelector(".cart-grid tbody");
             cartGrid.innerHTML = "";
             var totalPrice = 0;
-
+          
             cartItems.forEach(function(item) {
-                var row = document.createElement("tr");
-                row.className = "cart-item";
-                row.innerHTML = `
-                    <td>${item.productId}</td>
-                    <td>${item.productName}</td>
-                    <td class="item-quantity-control">
-                        <button onclick="decreaseQuantity('${item.productId}')">-</button>
-                        <input type="text" value="${item.quantity}" onchange="updateQuantity(this, '${item.productId}')">
-                        <button onclick="increaseQuantity('${item.productId}')">+</button>
-                    </td>
-                    <td>$${(item.quantity * item.price).toFixed(2)}</td>
-                    <td><button class="remove-item" onclick="removeItem('${item.productId}')">Remove</button></td>
-                `;
-                cartGrid.appendChild(row);
-                totalPrice += item.quantity * item.price;
+              var row = document.createElement("tr");
+              var cellProductId = document.createElement("td");
+              var cellProductName = document.createElement("td");
+              var cellQuantity = document.createElement("td");
+              var cellPrice = document.createElement("td");
+              var cellRemove = document.createElement("td");
+          
+              cellProductId.textContent = item.productId;
+              cellProductName.textContent = item.productName;
+              cellQuantity.textContent = item.quantity;
+              cellPrice.textContent = "$" + item.price.toFixed(2);  // Format price with two decimal places
+          
+              // Add a button or link for removing the item
+              var removeButton = document.createElement("button");
+              removeButton.textContent = "Remove";
+              removeButton.addEventListener("click", function() {
+                // Remove the item from the cartItems array based on its ID
+                var itemIndex = cartItems.findIndex(cartItem => cartItem.productId === item.productId);
+                if (itemIndex !== -1) {
+                  // Update quantity available
+                  var availableQuantitySpan = document.getElementById("available_quantity_" + item.productId);
+                  availableQuantitySpan.textContent = parseInt(availableQuantitySpan.textContent) + cartItems[itemIndex].quantity;
+                  cartItems.splice(itemIndex, 1);
+                  updateShoppingCart(); // Call updateShoppingCart again to refresh the table
+                }
+              });
+              cellRemove.appendChild(removeButton);
+          
+              row.appendChild(cellProductId);
+              row.appendChild(cellProductName);
+              row.appendChild(cellQuantity);
+              row.appendChild(cellPrice);
+              row.appendChild(cellRemove);
+              cartGrid.appendChild(row);
+          
+              totalPrice += item.quantity * item.price;
             });
-
-            document.getElementById("total-price").textContent = `$${totalPrice.toFixed(2)}`;
-        }
-
-        function removeItem(productId) {
-            var item = cartItems.find(item => item.productId === productId);
-            var inputField = document.getElementById("quantity_input_" + productId);
-            var availableQuantitySpan = document.getElementById("available_quantity_" + productId);
-            if (item) {
-                availableQuantitySpan.textContent = parseInt(availableQuantitySpan.textContent) + item.quantity;
-                cartItems = cartItems.filter(item => item.productId !== productId);
-                updateShoppingCart();
-            }
-        }
-
-        function increaseQuantity(productId) {
-            var item = cartItems.find(item => item.productId === productId);
-            if (item) {
-                item.quantity++;
-                updateShoppingCart();
-            }
-        }
-
-        function decreaseQuantity(productId) {
-            var item = cartItems.find(item => item.productId === productId);
-            if (item && item.quantity > 1) {
-                item.quantity--;
-                updateShoppingCart();
-            }
-        }
-
-        function updateQuantity(input, productId) {
-            var newQuantity = parseInt(input.value);
-            var item = cartItems.find(item => item.productId === productId);
-            if (item && !isNaN(newQuantity) && newQuantity >= 0) {
-                item.quantity = newQuantity;
-                updateShoppingCart();
-            } else {
-                alert("Invalid quantity");
-                input.value = item.quantity;
-            }
-        }
-
+          
+            document.getElementById("total-price").textContent = totalPrice.toFixed(2);
+          }
+          
+        $(document).ready(function() {
+            $('.remove-button').on('click', function() {
+                var productId = $(this).data('product-id');
+                $.ajax({
+                    url: '/remove_from_cart',
+                    type: 'POST',
+                    data: { product_id: productId },
+                    success: function(response) {
+                        if(response.success) {
+                            var availableQuantitySpan = $('#available_quantity_' + productId);
+                            var originalQuantity = parseInt(availableQuantitySpan.text()) + cartItems.find(item => item.productId == productId).quantity;
+                            availableQuantitySpan.text(originalQuantity);
+                            cartItems = cartItems.filter(item => item.productId != productId);
+                            updateShoppingCart();
+                            $('#total-price').text(`$${response.newTotal}`);
+                        } else {
+                            alert('Error removing item');
+                        }
+                    }
+                });
+            });
+        });
+    
         function previousOrders() {
             alert("Previous Orders functionality to be implemented.");
         }
-
+    
         function placeOrder() {
             alert("Order placement functionality to be implemented.");
         }
