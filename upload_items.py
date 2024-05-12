@@ -2,7 +2,6 @@ from sqlalchemy.exc import SQLAlchemyError
 
 from inventory_db import Inventory, Session
 
-# Define the inventory items with updated quantity available
 updated_inventory_items = [
     Inventory(ProductID=1, QuantityAvailable=200, SupplierID=101, WarehouseLocation="Warehouse A"),
     Inventory(ProductID=2, QuantityAvailable=180, SupplierID=102, WarehouseLocation="Warehouse B"),
@@ -21,11 +20,10 @@ updated_inventory_items = [
     Inventory(ProductID=15, QuantityAvailable=250, SupplierID=115, WarehouseLocation="Warehouse O")
 ]
 
-# Update inventory items in the session
 session = Session()
 try:
     for item in updated_inventory_items:
-        session.merge(item)  # Use merge to update existing records or add new ones if not present
+        session.merge(item) 
     session.commit()
     print("Inventory updated successfully!")
 except SQLAlchemyError as e:

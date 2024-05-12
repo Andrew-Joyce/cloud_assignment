@@ -2,13 +2,10 @@ from sqlalchemy import create_engine, Column, Integer, String, Float, Date
 from sqlalchemy.orm import sessionmaker, declarative_base
 from sqlalchemy.exc import SQLAlchemyError
 
-# Define the database URL
 DATABASE_URL = "postgresql://postgres:Hoppers3195@assignment3.c54y666q6ct9.ap-southeast-2.rds.amazonaws.com:5432/postgres?sslmode=require"
 
-# Initialize SQLAlchemy Base
 Base = declarative_base()
 
-# Define the Product model
 class Product(Base):
     __tablename__ = 'products'
     ProductID = Column(Integer, primary_key=True)
@@ -18,15 +15,12 @@ class Product(Base):
     Category = Column(String(50))
     ImageURL = Column(String(200))
 
-# Create the database engine
 engine = create_engine(DATABASE_URL)
-Base.metadata.create_all(engine)  # Creates all tables based on the Base metadata
+Base.metadata.create_all(engine) 
 
-# Bind the engine to the sessionmaker
 Session = sessionmaker(bind=engine)
 session = Session()
 
-# Define products to be added
 products = [
     Product(ProductName="Apple", Description="Fresh apples.", Price=0.30, Category="Fruits", ImageURL="http://www.macdentalcare.com/pub/photo/2014-09-apple.jpg"),
     Product(ProductName="Chicken Breast", Description="High-quality skinless chicken breasts.", Price=5.50, Category="Meat", ImageURL="https://www.bowrivermeatmarket.ca/wp-content/uploads/2019/06/SKINLESS-BLESS-CHICKEN-BREASRS-scaled.jpeg"),
@@ -45,10 +39,8 @@ products = [
     Product(ProductName="Orange Juice", Description="Freshly squeezed orange juice.", Price=3.50, Category="Beverages", ImageURL="https://images.freeimages.com/images/large-previews/801/orange-juice-1321161.jpg")
 ]
 
-# Add products to the session
 session.add_all(products)
 
-# Commit the session
 try:
     session.commit()
     print("Products added successfully!")

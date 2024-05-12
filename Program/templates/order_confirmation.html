@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>Order Confirmation</h1>
+  <p>Thank you for your order!</p>
+  <h2>Order Details</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Product ID</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in cart_items %}
+      <tr>
+        <td>{{ item.productId }}</td>
+        <td>{{ item.productName }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>${{ '%.2f' | format(item.price) }}</td>  <!-- Corrected Price Formatting -->
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <h2>Delivery Details</h2>
+  <ul>
+    <li>Name:{{ user_details.name }}</li>
+    <li>Address: {{ user_details.address }}</li>
+    <li>Suburb: {{ user_details.suburb }}</li>
+    <li>State: {{ user_details.state }}</li>
+    <li>Postcode: {{ user_details.postcode }}</li>
+    <li>Phone: {{ user_details.phone }}</li>
+  </ul>
+  <button onclick="logout()">Checkout</button>
+
+  <script>
+    function logout() {
+      window.location.href = "{{ url_for('main.logout') }}";
+    }
+  </script>
+</body>
+</html>

@@ -9,8 +9,8 @@ environment-defaults:
     branch: null
     repository: null
   Newassignment-env:
-    branch: main
-    repository: New_Assignment
+    branch: null
+    repository: null
   my-flask-env:
     branch: null
     repository: null
