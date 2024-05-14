@@ -1,0 +1,3 @@
+[submodule "cloud_assignment"]
+    path = cloud_assignment
+    url = https://github.com/Andrew-Joyce/cloud_assignment.git
