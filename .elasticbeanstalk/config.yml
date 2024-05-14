@@ -8,7 +8,7 @@ environment-defaults:
 global:
   application_name: new_assignment
   branch: main
-  default_ec2_keyname: AndrewJoyce
+  default_ec2_keyname: null
   default_platform: Python 3.9 running on 64bit Amazon Linux 2023
   default_region: ap-southeast-2
   include_git_submodules: true
