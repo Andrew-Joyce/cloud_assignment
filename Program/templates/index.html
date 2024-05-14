@@ -30,7 +30,8 @@
             <p><strong>Price:</strong> {{ product.Price }}</p>
             <p><strong>Category:</strong> {{ product.Category }}</p>
             <p><strong>Description:</strong> {{ product.Description }}</p>
-            <img src="{{ product.ImageURL }}" alt="{{ product.ProductName }}">
+            <!-- Ensure the ImageURL only contains the filename -->
+            <img src="https://d28xfcmj99f4e7.cloudfront.net/{{ product.ImageURL }}" alt="{{ product.ProductName }}">
             <div class="quantity-and-button">
                 <label for="quantity_input_{{ product.ProductID }}">Select Quantity:</label>
                 <input type="number" id="quantity_input_{{ product.ProductID }}" name="quantity" min="0" max="{{ quantity_available }}">
@@ -122,7 +123,7 @@
                 cellProductId.textContent = item.productId;
                 cellProductName.textContent = item.productName;
                 cellQuantity.textContent = item.quantity;
-                cellPrice.textContent = "$" + item.price.toFixed(2);  // Format price with two decimal places
+                cellPrice.textContent = "$" + item.price.toFixed(2);
           
                 var removeButton = document.createElement("button");
                 removeButton.textContent = "Remove";

@@ -1,2 +1,0 @@
-print("Program package initialized!")
-
