@@ -4,12 +4,12 @@ branch-defaults:
     repository: https://github.com/Andrew-Joyce/cloud_assignment.git
 environment-defaults:
   Newassignment-env:
-    branch: main
-    repository: https://github.com/Andrew-Joyce/cloud_assignment.git
+    branch: null
+    repository: null
 global:
   application_name: new_assignment
   default_ec2_keyname: null
-  default_platform: Python 3.9 running on 64bit Amazon Linux 2023
+  default_platform: Python 3.9
   default_region: ap-southeast-2
   include_git_submodules: true
   instance_profile: null
@@ -18,4 +18,3 @@ global:
   profile: eb-cli
   sc: git
   workspace_type: Application
-
